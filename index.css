@@ -1,0 +1,295 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    background-color: #141414e9;
+}
+
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+    line-height: 1.1;
+}
+
+input,
+button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.container {
+    margin-inline: 42px;
+}
+
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.wrapper {
+    position: relative;
+    max-width: 550px;
+    margin-inline: auto;
+    border: 1px solid black;
+    background-color: white;
+    /* overflow: hidden; */
+}
+
+/* ==========Header========== */
+
+header {
+    height: 208px;
+    background-color: #0E0E0E;
+    margin: 0 auto;
+    position: relative;
+}
+
+.bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 20%;
+    opacity: 0.2;
+}
+
+.header-text {
+    width: 100%;
+    position: absolute;
+    top: 82.45px;
+    color: white;
+}
+
+h1 {
+    font-size: 42.79px;
+}
+
+.watchlist {
+    margin-left: auto;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* =============Searchbar========== */
+.searchbar {
+    background-color: white;
+    color: #6B7280;
+    width: 462px;
+    height: 38px;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    position: absolute;
+    top: 189px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-inline: auto;
+}
+
+.search-icon {
+    margin-left: 13px;
+}
+
+input {
+    border: none;
+}
+
+input {
+    border: 0;
+    outline: 0;
+}
+
+input:focus {
+    outline: none !important;
+
+}
+
+input:active {
+    background-color: none;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+input::placeholder {
+    font-size: 14px;
+    font-weight: 500;
+    color: #6B7280;
+}
+
+#search-btn {
+    height: 100%;
+    background-color: #F9FAFB;
+    border-left: 1px solid #D1D5DB;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 9px 38px;
+    margin-left: auto;
+}
+
+.searchbar img {
+    width: 16px;
+    margin-right: 8px;
+
+}
+
+.data-section {
+    width: 462px;
+    /* border: 2px solid burlywood; */
+    margin-inline: auto;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #dfdddd;
+
+}
+
+.data-section a {
+    /* border: 1px solid black; */
+    justify-content: center;
+    gap: 7px;
+    margin-top: 16px;
+}
+
+.data-section span {
+    color: #363636;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.watchlist-empty-section {
+    margin-top: 181px;
+    margin-bottom: 326px;
+}
+
+.empty-section {
+    margin-top: 212px;
+    margin-bottom: 269px;
+}
+
+.item-container {
+    height: 167px;
+    /* border: 2px solid khaki; */
+    border-bottom: 1.5px solid #E5E7EB;
+    margin-bottom: 21px;
+}
+
+.movie {
+
+    /* border: 1px solid darkgreen; */
+    /* margin-bottom: 20px; */
+}
+
+.movie img {
+    width: 99px;
+    border-radius: 2.33px;
+    margin-right: 21px;
+}
+
+.list {
+    margin-top: 63px;
+}
+
+.details-head {
+    margin-bottom: 11px;
+}
+
+.details-head h2 {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 8px;
+
+}
+
+.details-head span,
+.details-details span,
+.add-btn {
+    color: #111827;
+    font-size: 12px;
+    font-weight: 400;
+
+}
+
+.details-head span {
+    margin-left: 4px;
+}
+
+.details-head img {
+    width: 15px;
+    margin-right: 0;
+
+}
+
+.details-details {
+    margin-bottom: 8px;
+}
+
+.details-details span:first-child {
+    margin-right: 19px;
+}
+
+.details-details .add-btn {
+    margin-left: 30px;
+}
+
+.add-btn img {
+    width: 16px;
+    margin-right: 5px;
+}
+
+.details p {
+    color: #6B7280;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+}
