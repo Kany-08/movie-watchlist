@@ -28,7 +28,7 @@ function getFeedHtml() {
                     <div class="details">
                         <div class="details-head flex">
                             <h2>${movie.Title}</h2>
-                            <img src="assets/star.svg" />
+                            <i class="fa-solid fa-star"></i>
                             <span>${movie.Ratings[0].Value.substr(0, 3)}</span>
                         </div>
                         <div class="details-details flex">
@@ -61,7 +61,7 @@ function emptyWatchlist() {
     return `<div class="watchlist-empty-section flex align-center">
                 <p>Your watchlist is looking a little empty...</p>
                 <a href="index.html" class="flex center">
-                    <img class="plus-icon" src="assets/plus-w.svg" alt="plus icon button.">
+                    <i class="fa-solid fa-plus"></i>
                     <span>Let's add some movies!</span>
                 </a>
             </div>`

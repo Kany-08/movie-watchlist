@@ -76,7 +76,7 @@ function getFeedHtml() {
                     <div class="details">
                         <div class="details-head flex">
                             <h2>${movie.Title}</h2>
-                            <img src="assets/star.svg" />
+                            <i class="fa-solid fa-star"></i>
                             <span>${movie.Ratings[0].Value.substr(0, 3)}</span>
                         </div>
                         <div class="details-details flex">

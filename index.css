@@ -246,8 +246,9 @@ input::placeholder {
     margin-left: 4px;
 }
 
-.details-head img {
-    width: 15px;
+.details-head i {
+    color: gold;
+    font-size: 12px;
     margin-right: 0;
 }
 
@@ -263,7 +264,8 @@ input::placeholder {
     margin-left: 30px;
 }
 
-.add-btn i {
+.add-btn i,
+a .fa-plus {
     display: flex;
     justify-content: center;
     background-color: #0E0E0E;
