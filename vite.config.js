@@ -1,10 +1,18 @@
 import { defineConfig } from 'vite'
+import { resolve } from 'path'
 
 export default defineConfig({
     server: {
         watch: {
-            // Это критично для Windows/WSL2
             usePolling: true,
+        },
+    },
+    build: {
+        rollupOptions: {
+            input: {
+                main: resolve(__dirname, 'index.html'),
+                watchlist: resolve(__dirname, 'watchlist.html'), 
+            },
         },
     },
 })
