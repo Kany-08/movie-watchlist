@@ -17,7 +17,7 @@ document.addEventListener('click', (e) => {
 async function handleSearchBtnClick() {
     try {
         let searchArrIds = []
-        const response = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${searchBarInput.value}&type=movie`)
+        const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${searchBarInput.value}&type=movie`)
         const data = await response.json()
         const searchArr = data.Search
 
@@ -26,7 +26,7 @@ async function handleSearchBtnClick() {
             dataArr = []
             searchArr.forEach(el => searchArrIds.push(el.imdbID))
             searchArrIds.map(el => {
-                fetch(`http://www.omdbapi.com/?apikey=${apiKey}&i=${el}&type=movie`)
+                fetch(`https://www.omdbapi.com/?apikey=${apiKey}&i=${el}&type=movie`)
                     .then(res => res.json())
                     .then(data => {
                         dataArr.push(data)
