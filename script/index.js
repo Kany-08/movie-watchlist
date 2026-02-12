@@ -1,19 +1,8 @@
-
-
 const apiKey = import.meta.env.VITE_API_KEY
 let dataArr = []
-let watchListArr = JSON.parse(localStorage.getItem('watchlist')) ?? []
-let iconBtn = 'assets/plus-w.svg'
-
+let watchListArr = JSON.parse(localStorage.getItem('watchlist')) || []
 const searchBarInput = document.getElementById("search-bar-input")
 const dataSection = document.getElementById("data-section")
-const searchBtn = document.getElementById("search-btn")
-const watchlistDataSection = document.getElementById('watchlist-data-section')
-
-if (watchListArr.length > 0) {
-    renderWatchList()
-}
-console.log(watchListArr);
 
 document.addEventListener('click', (e) => {
     if (e.target.id === "search-btn") {
@@ -21,17 +10,16 @@ document.addEventListener('click', (e) => {
     }
     if (e.target.dataset.add) {
         handleAddBtnClick(e.target.dataset.add)
+
     }
 })
 
-
 async function handleSearchBtnClick() {
-
     try {
         let searchArrIds = []
         const response = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${searchBarInput.value}&type=movie`)
         const data = await response.json()
-        const searchArr = await data.Search
+        const searchArr = data.Search
 
         if (searchArr) {
             searchArrIds = []
@@ -53,49 +41,35 @@ async function handleSearchBtnClick() {
     } catch (error) {
         console.error(error);
         dataSection.textContent = "Unable to find what you’re looking for. Please try another search."
-
     }
 }
 
 function handleAddBtnClick(id) {
-
     const targetItemObj = dataArr.filter(item => {
         return item.imdbID === id
     })[0]
 
-    console.log(targetItemObj);
+    if (targetItemObj) {
+        document.querySelector(`[data-add="${id}"]`).querySelector('i').classList.toggle('fa-check', 'fa-plus')
 
-
-
-    if (!targetItemObj) {
-        console.log("Target item object not found in dataArr.");
-
-    } else {
-        const itemIndex = watchListArr.findIndex(item => item.imdbID === id)
-
-        if (itemIndex === -1) {
+        const existingItem = watchListArr.find(item => item.imdbID === id)
+        if (!existingItem) {
             watchListArr.push(targetItemObj)
-
+            localStorage.setItem('watchlist', JSON.stringify(watchListArr))
 
         } else {
-            watchListArr.splice(itemIndex, 1)
-            console.log("Removed from watch list:", watchListArr);
+            console.log(existingItem + ' is already exist');
 
         }
 
-        localStorage.setItem("watchlist", JSON.stringify(watchListArr))
-        renderWatchList()
-
+    } else {
+        console.log('Target item is not found');
     }
-
-
-
 }
 
-function getFeedHtml(arr) {
+function getFeedHtml() {
 
-    return arr.map(movie =>
-
+    return dataArr.map(movie =>
         `<div class="item-container">
                 <div class="movie flex align-center">
                     <img src="${movie.Poster}" >
@@ -109,7 +83,7 @@ function getFeedHtml(arr) {
                             <span>${movie.Runtime}</span>
                             <span>${movie.Genre}</span>
                             <button class="add-btn flex align-center" data-add="${movie.imdbID}">
-                                <img src="assets/plus-w.svg" />Watchlist
+                                <i class="fa-solid fa-plus"></i>Watchlist
                             </button>
                         </div>
                         
@@ -120,23 +94,14 @@ function getFeedHtml(arr) {
               </div>
             `
     ).join("")
-
-
-
 }
 
 function render() {
     dataSection.classList.toggle("list", "empty-section")
-    dataSection.innerHTML = getFeedHtml(dataArr)
+    dataSection.innerHTML = getFeedHtml()
 }
 
-function renderWatchList() {
 
-    if (watchListArr.length > 0) {
-        watchlistDataSection.innerHTML = getFeedHtml(watchListArr)
-    }
 
-}
 
-// console.log(localStorage.getItem('watchList'));
 
